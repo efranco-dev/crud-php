@@ -44,9 +44,9 @@ $result = $statement->fetchAll((PDO::FETCH_ASSOC));
                     <tr>
                         <td><?= $row['nome'] ?></td>
                         <td class="d-flex.justfy-content-end gap-3">
-                        <a class="btn btn-sm btn-primary" href="visualizar.php">Ver</a>
-                        <a class="btn btn-sm btn-warning" href="editar.php">Editar</a>
-                        <a class="btn btn-sm btn-danger" href="deletar.php">Excluir</a>
+                        <a class="btn btn-sm btn-primary" href="visualizar.php?id=<?= $row['id'] ?>">Ver</a>
+                        <a class="btn btn-sm btn-warning" href="editar.php?id=<?= $row['id'] ?>">Editar</a>
+                        <a class="btn btn-sm btn-danger" href="deletar.php?id=<?= $row['id'] ?>">Excluir</a>
                         </td>
                     </tr>
                 <?php endforeach ?>
