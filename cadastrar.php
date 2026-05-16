@@ -10,6 +10,7 @@ $datanasc = filter_input(INPUT_POST, 'datanasc', FILTER_DEFAULT);
 try {
     $sql = "INSERT INTO `cadastro`(nome, sobrenome, datanasc) VALUES('$nome', '$sobrenome', '$datanasc')";
     $statement = $pdo->query($sql);
+    header('location:/crud-php');
 }catch(PDOException $e) {
     echo "Ops! algo deu errado: ". $e->getMessage();
     exit;
