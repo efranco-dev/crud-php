@@ -13,5 +13,6 @@ try {
     header('location:/crud-php');
 }catch(PDOException $e) {
     echo "Ops! algo deu errado: ". $e->getMessage();
-    exit;
+    exit();
 }
+ 
