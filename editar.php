@@ -18,6 +18,7 @@ $result = $statement->fetch((PDO::FETCH_ASSOC));
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.4/font/bootstrap-icons.css" rel="stylesheet" />
 </head>
 
 <body>
@@ -25,18 +26,77 @@ $result = $statement->fetch((PDO::FETCH_ASSOC));
 
     </header>
     <main class="container">
-        <a class="btn btn-sm btn-danger mt-3" href="/crud-php">Sair</a>
-        <form class="form d-flex gap-3 mt-3" action="atualizar.php?id=<?=$result['id']?>" method="post">
-            <input value="<?=$result['nome']?>" autocomplete="off" placeholder="Nome" class="form-control" type="text" name="nome">
-            <input value="<?=$result['endereco']?>" autocomplete="off" placeholder="Endereço" class="form-control" type="text" name="endereco">
-            <input value="<?=$result['telefone']?>" autocomplete="off" placeholder="Telefone" class="form-control" type="text" name="telefone" maxlength="15" oninput="maskPhone(event)">
-            <input value="<?=$result['aparelho']?>" autocomplete="off" placeholder="Aparelho" class="form-control" type="text" name="aparelho">
-            <input value="<?=$result['marca']?>" autocomplete="off" placeholder="Marca" class="form-control" type="text" name="marca">
-            <input value="<?=$result['modelo']?>" autocomplete="off" placeholder="Modelo" class="form-control" type="text" name="modelo">
-            <input value="<?=$result['defeito']?>" autocomplete="off" placeholder="Defeito" class="form-control" type="text" name="defeito">
-            <input value="<?=$result['observacoes']?>" autocomplete="off" placeholder="Observações" class="form-control" type="text" name="observacoes">
-            <input type="submit" value="Atualizar" class="btn btn-sm btn-primary">
-        </form>
+        <div class="card my-4 shadow-sm">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <h2 class="h5 mb-0">Editar cadastro</h2>
+                <a class="btn btn-sm btn-danger" href="/crud-php"><i class="bi bi-box-arrow-left"></i> Sair</a>
+            </div>
+            <div class="card-body">
+                <form action="atualizar.php?id=<?=$result['id']?>" method="post">
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <label class="form-label" for="nome">Nome</label>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="bi bi-person-fill"></i></span>
+                                <input id="nome" value="<?=$result['nome']?>" autocomplete="off" placeholder="Nome" class="form-control" type="text" name="nome">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label" for="endereco">Endereço</label>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="bi bi-geo-alt-fill"></i></span>
+                                <input id="endereco" value="<?=$result['endereco']?>" autocomplete="off" placeholder="Endereço" class="form-control" type="text" name="endereco">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label" for="telefone">Telefone</label>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="bi bi-telephone-fill"></i></span>
+                                <input id="telefone" value="<?=$result['telefone']?>" autocomplete="off" placeholder="Telefone" class="form-control" type="text" name="telefone" maxlength="15" oninput="maskPhone(event)">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label" for="aparelho">Aparelho</label>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="bi bi-phone-fill"></i></span>
+                                <input id="aparelho" value="<?=$result['aparelho']?>" autocomplete="off" placeholder="Aparelho" class="form-control" type="text" name="aparelho">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label" for="marca">Marca</label>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="bi bi-tag-fill"></i></span>
+                                <input id="marca" value="<?=$result['marca']?>" autocomplete="off" placeholder="Marca" class="form-control" type="text" name="marca">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label" for="modelo">Modelo</label>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="bi bi-box-seam"></i></span>
+                                <input id="modelo" value="<?=$result['modelo']?>" autocomplete="off" placeholder="Modelo" class="form-control" type="text" name="modelo">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label" for="defeito">Defeito</label>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="bi bi-exclamation-triangle-fill"></i></span>
+                                <input id="defeito" value="<?=$result['defeito']?>" autocomplete="off" placeholder="Defeito" class="form-control" type="text" name="defeito">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label" for="observacoes">Observações</label>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="bi bi-chat-text-fill"></i></span>
+                                <textarea id="observacoes" autocomplete="off" placeholder="Observações" class="form-control" name="observacoes" rows="2"><?= $result['observacoes'] ?></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-3 text-end">
+                        <button type="submit" class="btn btn-primary btn-sm">Atualizar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
     </main>
     <footer>
 
@@ -44,6 +104,19 @@ $result = $statement->fetch((PDO::FETCH_ASSOC));
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
         crossorigin="anonymous"></script>
+    <script>
+        function maskPhone(e) {
+            var v = e.target.value.replace(/\D/g,'');
+            if (v.length > 10) {
+                v = v.replace(/^(\d{2})(\d{5})(\d{4}).*/, '($1) $2-$3');
+            } else if (v.length > 5) {
+                v = v.replace(/^(\d{2})(\d{4})(\d{0,4}).*/, '($1) $2-$3');
+            } else if (v.length > 2) {
+                v = v.replace(/^(\d{2})(\d{0,5})/, '($1) $2');
+            }
+            e.target.value = v;
+        }
+    </script>
 </body>
 
 </html>
