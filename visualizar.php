@@ -31,9 +31,15 @@ $result = $statement->fetch(PDO::FETCH_ASSOC);
         <main class="container">
             <div><h4>Dados Cadastrado</h4></div>
             <a href="/crud-php" class="btn btn-sm btn-danger">Sair</a>
+            <p><b>Data de Entrada:</b> <?= date('d/m/Y H:i', strtotime($result['data_entrada']))?></p>
             <p><b>Nome:</b> <?= $result['nome']?></p>
-            <p><b>Sobrenome:</b> <?= $result['sobrenome']?></p>
-            <p><b>Data:</b> <?= date('d-m-Y', strtotime($result['datanasc']))?></p>
+            <p><b>Endereço:</b> <?= $result['endereco']?></p>
+            <p><b>Telefone:</b> <?= $result['telefone']?></p>
+            <p><b>Aparelho:</b> <?= $result['aparelho']?></p>
+            <p><b>Marca:</b> <?= $result['marca']?></p>
+            <p><b>Modelo:</b> <?= $result['modelo']?></p>
+            <p><b>Defeito:</b> <?= $result['defeito']?></p>
+            <p><b>Observações:</b> <?= $result['observacoes']?></p>
         </main>
         <footer>
         </footer>

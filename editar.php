@@ -28,8 +28,13 @@ $result = $statement->fetch((PDO::FETCH_ASSOC));
         <a class="btn btn-sm btn-danger mt-3" href="/crud-php">Sair</a>
         <form class="form d-flex gap-3 mt-3" action="atualizar.php?id=<?=$result['id']?>" method="post">
             <input value="<?=$result['nome']?>" autocomplete="off" placeholder="Nome" class="form-control" type="text" name="nome">
-            <input value="<?=$result['sobrenome']?>" autocomplete="off" placeholder="Sobrenome" class="form-control" type="text" name="sobrenome">
-            <input value="<?=$result['datanasc']?>" autocomplete="off" placeholder="Data" class="form-control" type="date" name="datanasc">
+            <input value="<?=$result['endereco']?>" autocomplete="off" placeholder="Endereço" class="form-control" type="text" name="endereco">
+            <input value="<?=$result['telefone']?>" autocomplete="off" placeholder="Telefone" class="form-control" type="text" name="telefone" maxlength="15" oninput="maskPhone(event)">
+            <input value="<?=$result['aparelho']?>" autocomplete="off" placeholder="Aparelho" class="form-control" type="text" name="aparelho">
+            <input value="<?=$result['marca']?>" autocomplete="off" placeholder="Marca" class="form-control" type="text" name="marca">
+            <input value="<?=$result['modelo']?>" autocomplete="off" placeholder="Modelo" class="form-control" type="text" name="modelo">
+            <input value="<?=$result['defeito']?>" autocomplete="off" placeholder="Defeito" class="form-control" type="text" name="defeito">
+            <input value="<?=$result['observacoes']?>" autocomplete="off" placeholder="Observações" class="form-control" type="text" name="observacoes">
             <input type="submit" value="Atualizar" class="btn btn-sm btn-primary">
         </form>
     </main>

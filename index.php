@@ -26,8 +26,13 @@ $result = $statement->fetchAll((PDO::FETCH_ASSOC));
     <main class="container">
         <form class="form d-flex gap-3 mt-3" action="cadastrar.php" method="post">
             <input autocomplete="off" placeholder="Nome" class="form-control" type="text" name="nome">
-            <input autocomplete="off" placeholder="Sobrenome" class="form-control" type="text" name="sobrenome">
-            <input autocomplete="off" placeholder="Data" class="form-control" type="date" name="datanasc">
+            <input autocomplete="off" placeholder="Endereço" class="form-control" type="text" name="endereco">
+            <input autocomplete="off" placeholder="Telefone" class="form-control" type="text" name="telefone" maxlength="15" oninput="maskPhone(event)">
+            <input autocomplete="off" placeholder="Aparelho" class="form-control" type="text" name="aparelho">
+            <input autocomplete="off" placeholder="Marca" class="form-control" type="text" name="marca">
+            <input autocomplete="off" placeholder="Modelo" class="form-control" type="text" name="modelo">
+            <input autocomplete="off" placeholder="Defeito" class="form-control" type="text" name="defeito">
+            <input autocomplete="off" placeholder="Observações" class="form-control" type="text" name="observacoes">
             <input type="submit" value="Cadastrar" class="btn btn-sm btn-success">
         </form>
         <hr>
@@ -35,6 +40,8 @@ $result = $statement->fetchAll((PDO::FETCH_ASSOC));
             <thead>
                 <tr>
                     <th>Nome</th>
+                    <th>Telefone</th>
+                    <th>Data de Entrada</th>
                     <th>Opções</th>
                 </tr>
             </thead>
@@ -43,6 +50,8 @@ $result = $statement->fetchAll((PDO::FETCH_ASSOC));
                 foreach ($result as $row): ?>
                     <tr>
                         <td><?= $row['nome'] ?></td>
+                        <td><?= $row['telefone'] ?></td>
+                        <td><?= date('d/m/Y H:i', strtotime($row['data_entrada'])) ?></td>
                         <td class="d-flex.justfy-content-end gap-3">
                         <a class="btn btn-sm btn-primary" href="visualizar.php?id=<?= $row['id'] ?>">Ver</a>
                         <a class="btn btn-sm btn-warning" href="editar.php?id=<?= $row['id'] ?>">Editar</a>
@@ -59,6 +68,19 @@ $result = $statement->fetchAll((PDO::FETCH_ASSOC));
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
         crossorigin="anonymous"></script>
+    <script>
+        function maskPhone(e) {
+            var v = e.target.value.replace(/\D/g,'');
+            if (v.length > 10) {
+                v = v.replace(/^(\d{2})(\d{5})(\d{4}).*/, '($1) $2-$3');
+            } else if (v.length > 5) {
+                v = v.replace(/^(\d{2})(\d{4})(\d{0,4}).*/, '($1) $2-$3');
+            } else if (v.length > 2) {
+                v = v.replace(/^(\d{2})(\d{0,5})/, '($1) $2');
+            }
+            e.target.value = v;
+        }
+    </script>
 </body>
 
 </html>
