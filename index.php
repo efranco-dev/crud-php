@@ -34,14 +34,14 @@ $result = $statement->fetchAll((PDO::FETCH_ASSOC));
               <label class="form-label" for="nome">Nome</label>
               <div class="input-group">
                 <span class="input-group-text"><i class="bi bi-person-fill"></i></span>
-                <input id="nome" autocomplete="off" placeholder="Nome" class="form-control" type="text" name="nome">
+                <input id="nome" autocomplete="off" class="form-control" type="text" name="nome">
               </div>
             </div>
             <div class="col-md-6">
               <label class="form-label" for="endereco">Endereço</label>
               <div class="input-group">
                 <span class="input-group-text"><i class="bi bi-geo-alt-fill"></i></span>
-                <input id="endereco" autocomplete="off" placeholder="Endereço" class="form-control" type="text"
+                <input id="endereco" autocomplete="off" class="form-control" type="text"
                   name="endereco">
               </div>
             </div>
@@ -49,7 +49,7 @@ $result = $statement->fetchAll((PDO::FETCH_ASSOC));
               <label class="form-label" for="telefone">Telefone</label>
               <div class="input-group">
                 <span class="input-group-text"><i class="bi bi-telephone-fill"></i></span>
-                <input id="telefone" autocomplete="off" placeholder="Telefone" class="form-control" type="text"
+                <input id="telefone" autocomplete="off" class="form-control" type="text"
                   name="telefone" maxlength="15" oninput="maskPhone(event)">
               </div>
             </div>
@@ -57,30 +57,30 @@ $result = $statement->fetchAll((PDO::FETCH_ASSOC));
               <label class="form-label" for="aparelho">Aparelho</label>
               <div class="input-group">
                 <span class="input-group-text"><i class="bi bi-phone-fill"></i></span>
-                <input id="aparelho" autocomplete="off" placeholder="Aparelho" class="form-control" type="text"
-                  name="aparelho">
+                <input id="aparelho" autocomplete="off" class="form-control" type="text"
+                  name="aparelho" style="text-transform: uppercase;">
               </div>
             </div>
             <div class="col-md-4">
               <label class="form-label" for="marca">Marca</label>
               <div class="input-group">
                 <span class="input-group-text"><i class="bi bi-tag-fill"></i></span>
-                <input id="marca" autocomplete="off" placeholder="Marca" class="form-control" type="text" name="marca">
+                <input id="marca" autocomplete="off" class="form-control" type="text" name="marca" style="text-transform: uppercase;">
               </div>
             </div>
             <div class="col-md-4">
               <label class="form-label" for="modelo">Modelo</label>
               <div class="input-group">
                 <span class="input-group-text"><i class="bi bi-box-seam"></i></span>
-                <input id="modelo" autocomplete="off" placeholder="Modelo" class="form-control" type="text"
-                  name="modelo">
+                <input id="modelo" autocomplete="off" class="form-control" type="text"
+                  name="modelo" style="text-transform: uppercase;">
               </div>
             </div>
             <div class="col-md-4">
               <label class="form-label" for="defeito">Defeito</label>
               <div class="input-group">
                 <span class="input-group-text"><i class="bi bi-exclamation-triangle-fill"></i></span>
-                <input id="defeito" autocomplete="off" placeholder="Defeito" class="form-control" type="text"
+                <input id="defeito" autocomplete="off" class="form-control" type="text"
                   name="defeito">
               </div>
             </div>
@@ -88,13 +88,13 @@ $result = $statement->fetchAll((PDO::FETCH_ASSOC));
               <label class="form-label" for="observacoes">Observações</label>
               <div class="input-group">
                 <span class="input-group-text"><i class="bi bi-chat-text-fill"></i></span>
-                <textarea id="observacoes" autocomplete="off" placeholder="Observações" class="form-control"
+                <textarea id="observacoes" autocomplete="off"class="form-control"
                   name="observacoes" rows="2"></textarea>
               </div>
             </div>
           </div>
           <div class="mt-3 text-end">
-            <button type="submit" class="btn btn-success btn-sm">Cadastrar</button>
+            <button type="submit" class="btn btn-success btn-sm"><i class="bi bi-person-fill-add"></i> Cadastrar</button>
           </div>
         </form>
       </div>
@@ -117,9 +117,9 @@ $result = $statement->fetchAll((PDO::FETCH_ASSOC));
             <td><?= $row['telefone'] ?></td>
             <td><?= date('d/m/Y H:i', strtotime($row['data_entrada'])) ?></td>
             <td class="d-flex justify-content-end gap-2">
-              <a class="btn btn-sm btn-primary" href="visualizar.php?id=<?= $row['id'] ?>">Ver</a>
-              <a class="btn btn-sm btn-warning" href="editar.php?id=<?= $row['id'] ?>">Editar</a>
-              <a class="btn btn-sm btn-danger" href="deletar.php?id=<?= $row['id'] ?>">Excluir</a>
+              <a class="btn btn-sm btn-primary" href="visualizar.php?id=<?= $row['id'] ?>"><i class="bi bi-eye-fill"></i> Ver</a>
+              <a class="btn btn-sm btn-warning" href="editar.php?id=<?= $row['id'] ?>"><i class="bi bi-pencil-square"></i> Editar</a>
+              <a class="btn btn-sm btn-danger" href="deletar.php?id=<?= $row['id'] ?>"><i class="bi bi-trash3-fill"></i> Excluir</a>
             </td>
           </tr>
         <?php endforeach ?>
