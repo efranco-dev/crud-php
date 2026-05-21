@@ -22,26 +22,29 @@ $result = $statement->fetchAll((PDO::FETCH_ASSOC));
 
 <body>
   <header>
-
   </header>
   <main class="container">
     <div class="card my-4 shadow-sm">
+      <div class="card-header d-flex justify-content-between align-items-center">
+        <h2 class="h5 mb-0">Cadastro de Clientes e Serviço</h2>
+      </div>
       <div class="card-body">
-        <h2 class="h5 mb-3">Cadastro de Serviço</h2>
         <form action="cadastrar.php" method="post">
           <div class="row g-3">
             <div class="col-md-6">
               <label class="form-label" for="nome">Nome</label>
               <div class="input-group">
                 <span class="input-group-text"><i class="bi bi-person-fill"></i></span>
-                <input id="nome" autocomplete="off" class="form-control" type="text" name="nome"style="text-transform: uppercase;">
+                <input id="nome" autocomplete="off" class="form-control" type="text" name="nome"
+                  style="text-transform: uppercase;">
               </div>
             </div>
             <div class="col-md-6">
               <label class="form-label" for="endereco">Endereço</label>
               <div class="input-group">
                 <span class="input-group-text"><i class="bi bi-geo-alt-fill"></i></span>
-                <input id="endereco" autocomplete="off" class="form-control" type="text" name="endereco"style="text-transform: uppercase;">
+                <input id="endereco" autocomplete="off" class="form-control" type="text" name="endereco"
+                  style="text-transform: uppercase;">
               </div>
             </div>
             <div class="col-md-3">
@@ -77,18 +80,20 @@ $result = $statement->fetchAll((PDO::FETCH_ASSOC));
               </div>
             </div>
             <div class="col-md-4">
-              <label class="form-label" for="defeito">Defeito</label>
+              <label class="form-label" for="defeito">Defeito Relatado</label>
               <div class="input-group">
-                <span class="input-group-text"><i class="bi bi-exclamation-triangle-fill"></i></span>
-                <input id="defeito" autocomplete="off" class="form-control" type="text" name="defeito" style="text-transform: uppercase;">
+                <span class="input-group-text"><i class="bi bi-bug-fill"></i></span>
+                <input id="defeito" autocomplete="off" class="form-control" type="text" name="defeito"
+                  style="text-transform: uppercase;">
               </div>
             </div>
             <div class="col-md-4">
               <label class="form-label" for="servico">Serviço Executado
               </label>
               <div class="input-group">
-                <span class="input-group-text"><i class="bi bi-gear"></i></span>
-                <input id="servico" autocomplete="off" class="form-control" type="text" name="servico"style="text-transform: uppercase;">
+                <span class="input-group-text"><i class="bi bi-hammer"></i></span>
+                <input id="servico" autocomplete="off" class="form-control" type="text" name="servico"
+                  style="text-transform: uppercase;">
               </div>
             </div>
             <div class="col-md-4">
@@ -96,7 +101,32 @@ $result = $statement->fetchAll((PDO::FETCH_ASSOC));
               <div class="input-group">
                 <span class="input-group-text"><i class="bi bi-chat-text-fill"></i></span>
                 <textarea id="observacoes" autocomplete="off" class="form-control" name="observacoes"
-                  rows="2"></textarea>
+                  rows="1"></textarea>
+              </div>
+            </div>
+             <div class="col-md-4">
+              <label class="form-label" for="valor_servico">Valor do Serviço</label>
+              <div class="input-group">
+                <span class="input-group-text"><i class="bi bi-cash-stack"></i></span>
+                <input id="valor_servico" autocomplete="off" class="form-control" type="text" name="valor_servico"
+                  inputmode="decimal" oninput="updateTotal()" onblur="formatCurrencyField(this)">
+              </div>
+            </div>
+             <div class="col-md-4">
+              <label class="form-label" for="desconto">Desconto</label>
+              <div class="input-group">
+                <span class="input-group-text"><i class="bi bi-percent"></i></span>
+                <input id="desconto" autocomplete="off" class="form-control" type="text" name="desconto"
+                   inputmode="decimal" oninput="updateTotal()" onblur="formatCurrencyField(this)">
+              </div>
+            </div>
+              <div class="col-md-4">
+              <label class="form-label" for="valor_total">Valor Total</label>
+              <div class="input-group">
+                <span class="input-group-text"><i class="bi bi-calculator-fill"></i></span>
+                <input id="valor_total" autocomplete="off" class="form-control" type="text" name="valor_total"
+                  value="<?= isset($result['valor_total']) ? number_format((float)$result['valor_total'], 2, ',', '.') : '' ?>"
+                   readonly>
               </div>
             </div>
           </div>
@@ -155,6 +185,42 @@ $result = $statement->fetchAll((PDO::FETCH_ASSOC));
       }
       e.target.value = v;
     }
+
+    function parseCurrency(value) {
+      if (!value) return 0;
+      value = value.replace(/\./g, '').replace(/,/g, '.').trim();
+      var parsed = parseFloat(value);
+      return isNaN(parsed) ? 0 : parsed;
+    }
+
+    function formatCurrency(value) {
+      return value.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    }
+
+    function formatCurrencyField(field) {
+      if (!field.value.trim()) {
+        field.value = '';
+        updateTotal();
+        return;
+      }
+      field.value = formatCurrency(parseCurrency(field.value));
+      updateTotal();
+    }
+
+    function updateTotal() {
+      var valorServicoField = document.getElementById('valor_servico');
+      var descontoField = document.getElementById('desconto');
+      var valorServico = parseCurrency(valorServicoField.value);
+      var desconto = parseCurrency(descontoField.value);
+      if (!valorServicoField.value.trim() && !descontoField.value.trim()) {
+        document.getElementById('valor_total').value = '';
+        return;
+      }
+      var total = valorServico - desconto;
+      document.getElementById('valor_total').value = formatCurrency(total >= 0 ? total : 0);
+    }
+
+    document.addEventListener('DOMContentLoaded', updateTotal);
   </script>
 </body>
 
