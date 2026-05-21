@@ -2,6 +2,11 @@
 
 require('conexao.php');
 
+if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+    header('location:/crud-php');
+    exit();
+}
+
 $nome = filter_input(INPUT_POST, 'nome', FILTER_DEFAULT);
 $aparelho = filter_input(INPUT_POST, 'aparelho', FILTER_DEFAULT);
 $marca = filter_input(INPUT_POST, 'marca', FILTER_DEFAULT);

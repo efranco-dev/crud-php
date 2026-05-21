@@ -125,8 +125,7 @@ $result = $statement->fetchAll((PDO::FETCH_ASSOC));
               <div class="input-group">
                 <span class="input-group-text"><i class="bi bi-calculator-fill"></i></span>
                 <input id="valor_total" autocomplete="off" class="form-control" type="text" name="valor_total"
-                  value="<?= isset($result['valor_total']) ? number_format((float)$result['valor_total'], 2, ',', '.') : '' ?>"
-                   readonly>
+                  value="" readonly>
               </div>
             </div>
           </div>
