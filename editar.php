@@ -83,7 +83,7 @@ $result = $statement->fetch((PDO::FETCH_ASSOC));
               </div>
             </div>
             <div class="col-md-4">
-              <label class="form-label" for="defeito">Defeito</label>
+              <label class="form-label" for="defeito">Defeito Relatado</label>
               <div class="input-group">
                 <span class="input-group-text"><i class="bi bi-exclamation-triangle-fill"></i></span>
                 <input id="defeito" value="<?= $result['defeito'] ?>" autocomplete="off" class="form-control"
@@ -103,7 +103,34 @@ $result = $statement->fetch((PDO::FETCH_ASSOC));
               <div class="input-group">
                 <span class="input-group-text"><i class="bi bi-chat-text-fill"></i></span>
                 <textarea id="observacoes" autocomplete="off" class="form-control" name="observacoes"
-                  rows="2"><?= $result['observacoes'] ?></textarea>
+                  rows="1"><?= $result['observacoes'] ?></textarea>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <label class="form-label" for="servico">Valor do Serviço
+              </label>
+              <div class="input-group">
+                <span class="input-group-text"><i class="bi bi-cash-coin"></i></span>
+                <input id="servico" autocomplete="off" class="form-control" type="text" name="servico"
+                  style="text-transform: uppercase;">
+              </div>
+            </div>
+            <div class="col-md-4">
+              <label class="form-label" for="servico">Desconto
+              </label>
+              <div class="input-group">
+                <span class="input-group-text"><i class="bi bi-cash-coin"></i></span>
+                <input id="servico" autocomplete="off" class="form-control" type="text" name="servico"
+                  style="text-transform: uppercase;">
+              </div>
+            </div>
+            <div class="col-md-4">
+              <label class="form-label" for="servico">valor Total
+              </label>
+              <div class="input-group">
+                <span class="input-group-text"><i class="bi bi-cash-coin"></i></span>
+                <input id="servico" autocomplete="off" class="form-control" type="text" name="servico"
+                  style="text-transform: uppercase;">
               </div>
             </div>
           </div>
