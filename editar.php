@@ -3,7 +3,7 @@ require('conexao.php');
 
 $id = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);
 if (!$id) {
-  header('location:/crud-php');
+  header('location:/assist-os');
   exit();
 }
 
@@ -12,7 +12,7 @@ $statement = $pdo->prepare($sql);
 $statement->execute(['id' => $id]);
 $result = $statement->fetch(PDO::FETCH_ASSOC);
 if (!$result) {
-  header('location:/crud-php');
+  header('location:/assist-os');
   exit();
 }
 
@@ -39,7 +39,7 @@ if (!$result) {
     <div class="card my-4 shadow-sm">
       <div class="card-header d-flex justify-content-between align-items-center">
         <h2 class="h5 mb-0">Editar cadastro</h2>
-        <a class="btn btn-sm btn-danger" href="/crud-php"><i class="bi bi-box-arrow-left"></i> Voltar</a>
+        <a class="btn btn-sm btn-danger" href="/assist-os"><i class="bi bi-box-arrow-left"></i> Voltar</a>
       </div>
       <div class="card-body">
         <form action="atualizar.php?id=<?= $result['id'] ?>" method="post">

@@ -3,7 +3,7 @@
 require('conexao.php');
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-    header('location:/crud-php');
+    header('location:/assist-os');
     exit();
 }
 
@@ -53,7 +53,7 @@ try {
         ':desconto' => $desconto,
         ':valor_total' => $total,
     ]);
-    header('location:/crud-php');
+    header('location:/assist-os');
 } catch (PDOException $e) {
     echo "Ops! algo deu errado: " . $e->getMessage();
     exit();

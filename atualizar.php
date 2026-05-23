@@ -3,7 +3,7 @@ require('conexao.php');
 
 $id = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);
 if (!$id || $_SERVER['REQUEST_METHOD'] !== 'POST') {
-    header('location:/crud-php');
+    header('location:/assist-os');
     exit();
 }
 $nome = filter_input(INPUT_POST, 'nome', FILTER_DEFAULT);
@@ -54,7 +54,7 @@ try {
         ':valor_total' => $total,
         ':id' => $id,
     ]);
-    header('location:/crud-php');
+    header('location:/assist-os');
 } catch (PDOException $e) {
     echo "Ops! algo deu errado: " . $e->getMessage();
     exit();
