@@ -48,54 +48,62 @@ if (!$result) {
         <a href="/assist-os" class="btn btn-danger btn-sm"><i class="bi bi-box-arrow-left"></i> Voltar</a>
       </div>
       <div class="card-body">
-        <div class="list-group list-group-flush">
-          <div class="list-group-item px-0 py-2 border-bottom">
-            <span class="text-secondary"><i class="bi bi-person-fill me-1"></i> Nome:</span>
-            <span class="fw-semibold"> <?= $result['nome'] ?></span>
+        <div class="row gx-4">
+          <div class="col-12 col-md-6">
+            <div class="list-group list-group-flush">
+              <div class="list-group-item px-0 py-2 border-bottom">
+                <span class="text-secondary"><i class="bi bi-person-fill me-1"></i> Nome:</span>
+                <span class="fw-semibold"> <?= $result['nome'] ?></span>
+              </div>
+              <div class="list-group-item px-0 py-2 border-bottom">
+                <span class="text-secondary"><i class="bi bi-geo-alt-fill me-1"></i> Endereço:</span>
+                <span class="fw-semibold"> <?= $result['endereco'] ?></span>
+              </div>
+              <div class="list-group-item px-0 py-2 border-bottom">
+                <span class="text-secondary"><i class="bi bi-telephone-fill me-1"></i> Telefone:</span>
+                <span class="fw-semibold"> <?= $result['telefone'] ?></span>
+              </div>
+              <div class="list-group-item px-0 py-2 border-bottom">
+                <span class="text-secondary"><i class="bi bi-phone-fill me-1"></i> Aparelho:</span>
+                <span class="fw-semibold"> <?= $result['aparelho'] ?></span>
+              </div>
+              <div class="list-group-item px-0 py-2 border-bottom">
+                <span class="text-secondary"><i class="bi bi-tag-fill me-1"></i> Marca:</span>
+                <span class="fw-semibold"> <?= $result['marca'] ?></span>
+              </div>
+              <div class="list-group-item px-0 py-2 border-bottom">
+                <span class="text-secondary"><i class="bi bi-box-seam me-1"></i> Modelo:</span>
+                <span class="fw-semibold"> <?= $result['modelo'] ?></span>
+              </div>
+            </div>
           </div>
-          <div class="list-group-item px-0 py-2 border-bottom">
-            <span class="text-secondary"><i class="bi bi-geo-alt-fill me-1"></i> Endereço:</span>
-            <span class="fw-semibold"> <?= $result['endereco'] ?></span>
-          </div>
-          <div class="list-group-item px-0 py-2 border-bottom">
-            <span class="text-secondary"><i class="bi bi-telephone-fill me-1"></i> Telefone:</span>
-            <span class="fw-semibold"> <?= $result['telefone'] ?></span>
-          </div>
-          <div class="list-group-item px-0 py-2 border-bottom">
-            <span class="text-secondary"><i class="bi bi-phone-fill me-1"></i> Aparelho:</span>
-            <span class="fw-semibold"> <?= $result['aparelho'] ?></span>
-          </div>
-          <div class="list-group-item px-0 py-2 border-bottom">
-            <span class="text-secondary"><i class="bi bi-tag-fill me-1"></i> Marca:</span>
-            <span class="fw-semibold"> <?= $result['marca'] ?></span>
-          </div>
-          <div class="list-group-item px-0 py-2 border-bottom">
-            <span class="text-secondary"><i class="bi bi-box-seam me-1"></i> Modelo:</span>
-            <span class="fw-semibold"> <?= $result['modelo'] ?></span>
-          </div>
-          <div class="list-group-item px-0 py-2 border-bottom">
-            <span class="text-secondary"><i class="bi bi-bug-fill me-1"></i> Defeito:</span>
-            <span class="fw-semibold"> <?= $result['defeito'] ?></span>
-          </div>
-          <div class="list-group-item px-0 py-2 border-bottom">
-            <span class="text-secondary"><i class="bi bi-hammer me-1"></i> Serviço Executado:</span>
-            <span class="fw-semibold"> <?= $result['servico'] ?></span>
-          </div>
-          <div class="list-group-item px-0 py-2 border-bottom">
-            <span class="text-secondary"><i class="bi bi-chat-text-fill me-1"></i> Observações:</span>
-            <span class="fw-semibold d-block mt-1"> <?= nl2br(htmlspecialchars($result['observacoes'])) ?></span>
-          </div>
-          <div class="list-group-item px-0 py-2 border-bottom">
-            <span class="text-secondary"><i class="bi bi-cash-stack me-1"></i> Valor do Serviço:</span>
-            <span class="fw-semibold"> <?= number_format($result['valor_servico'], 2, ',', '.') ?></span>
-          </div>
-          <div class="list-group-item px-0 py-2 border-bottom">
-            <span class="text-secondary"><i class="bi bi-percent me-1"></i> Desconto:</span>
-            <span class="fw-semibold"> <?= number_format($result['desconto'], 2, ',', '.') ?></span>
-          </div>
-          <div class="list-group-item px-0 py-2 border-bottom">
-            <span class="text-secondary"><i class="bi bi-calculator-fill me-1"></i> Valor Total:</span>
-            <span class="fw-semibold"> <?= number_format($result['valor_total'], 2, ',', '.') ?></span>
+          <div class="col-12 col-md-6">
+            <div class="list-group list-group-flush">
+              <div class="list-group-item px-0 py-2 border-bottom">
+                <span class="text-secondary"><i class="bi bi-bug-fill me-1"></i> Defeito:</span>
+                <span class="fw-semibold"> <?= $result['defeito'] ?></span>
+              </div>
+              <div class="list-group-item px-0 py-2 border-bottom">
+                <span class="text-secondary"><i class="bi bi-hammer me-1"></i> Serviço Executado:</span>
+                <span class="fw-semibold"> <?= $result['servico'] ?></span>
+              </div>
+              <div class="list-group-item px-0 py-2 border-bottom">
+                <span class="text-secondary"><i class="bi bi-cash-stack me-1"></i> Valor do Serviço:</span>
+                <span class="fw-semibold"> <?= number_format($result['valor_servico'], 2, ',', '.') ?></span>
+              </div>
+              <div class="list-group-item px-0 py-2 border-bottom">
+                <span class="text-secondary"><i class="bi bi-percent me-1"></i> Desconto:</span>
+                <span class="fw-semibold"> <?= number_format($result['desconto'], 2, ',', '.') ?></span>
+              </div>
+              <div class="list-group-item px-0 py-2 border-bottom">
+                <span class="text-secondary"><i class="bi bi-calculator-fill me-1"></i> Valor Total:</span>
+                <span class="fw-semibold"> <?= number_format($result['valor_total'], 2, ',', '.') ?></span>
+              </div>
+              <div class="list-group-item px-0 py-2 border-bottom">
+                <span class="text-secondary"><i class="bi bi-chat-text-fill me-1"></i> Observações:</span>
+                <span class="fw-semibold d-block mt-1"> <?= nl2br(htmlspecialchars($result['observacoes'])) ?></span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
