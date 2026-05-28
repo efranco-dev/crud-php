@@ -1,4 +1,5 @@
 <?php
+session_start();
 require('conexao.php');
 
 $sql = "SELECT * FROM `cadastro`";
@@ -25,6 +26,12 @@ $result = $statement->fetchAll((PDO::FETCH_ASSOC));
   <header>
   </header>
   <main class="container">
+    <?php if(isset($_SESSION['sucesso']) && $_SESSION['sucesso']): ?>
+    <div id="mensagemSucesso" class="alert alert-success alert-dismissible fade show mt-3" role="alert" style="background-color: #d4edda; border-color: #c3e6cb; color: #155724;">
+      <i class="bi bi-check-circle-fill"></i> Contato criado com sucesso!
+    </div>
+    <?php unset($_SESSION['sucesso']); ?>
+    <?php endif; ?>
     <div class="card my-4 shadow-sm">
       <div class="card-header d-flex justify-content-between align-items-center">
         <h2 class="h5 mb-0">Cadastro de Clientes e Serviço</h2>
@@ -175,6 +182,18 @@ $result = $statement->fetchAll((PDO::FETCH_ASSOC));
     crossorigin="anonymous"></script>
   <script src="js/total-calculation.js"></script>
   <script src="js/mask-phone.js"></script>
+  <script>
+    // Fazer a mensagem de sucesso desaparecer após 4 segundos
+    const mensagem = document.getElementById('mensagemSucesso');
+    if (mensagem) {
+      setTimeout(() => {
+        mensagem.classList.remove('show');
+        setTimeout(() => {
+          mensagem.remove();
+        }, 150);
+      }, 4000);
+    }
+  </script>
 </body>
 
 </html>

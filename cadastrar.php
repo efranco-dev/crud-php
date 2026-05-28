@@ -1,6 +1,7 @@
 <?php
 
 require('conexao.php');
+session_start();
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     header('location:/assist-os');
@@ -53,6 +54,7 @@ try {
         ':desconto' => $desconto,
         ':valor_total' => $total,
     ]);
+    $_SESSION['sucesso'] = true;
     header('location:/assist-os');
 } catch (PDOException $e) {
     echo "Ops! algo deu errado: " . $e->getMessage();
