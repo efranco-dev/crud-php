@@ -64,22 +64,42 @@ $result = $statement->fetchAll((PDO::FETCH_ASSOC));
                   oninput="maskPhone(event)">
               </div>
             </div>
+            <!-- fazendo testes -->
             <div class="col-md-3">
               <label class="form-label" for="aparelho">Aparelho</label>
               <div class="input-group">
                 <span class="input-group-text"><i class="bi bi-phone-fill"></i></span>
-                <input id="aparelho" autocomplete="off" class="form-control" type="text" name="aparelho"
-                  style="text-transform: uppercase;">
+                <select name="aparelho" id="aparelho" class="form-select">
+                  <option value="">Selecione</option>
+                  <option value="microondas">MICROONDAS</option>
+                  <option value="tv de led">TV DE LED</option>
+                  <option value="tv de lcd">TV DE LCD</option>
+                  <option value="tv de plasma">TV DE PLASMA</option>
+                  <option value="outro">OUTRO</option>
+                </select>
               </div>
             </div>
             <div class="col-md-3">
               <label class="form-label" for="marca">Marca</label>
               <div class="input-group">
-                <span class="input-group-text"><i class="bi bi-tag-fill"></i></span>
-                <input id="marca" autocomplete="off" class="form-control" type="text" name="marca"
-                  style="text-transform: uppercase;">
+                <span class="input-group-text"><i class="bi bi-tag-fill"></i></i></span>
+                <select name="marca" id="marca" class="form-select">
+                  <option value="">Selecione</option>
+                  <option value="brastemp">BRASTEMP</option>
+                  <option value="consul">CONSUL</option>
+                  <option value="electrolux">ELECTROLUX</option>
+                  <option value="panasonic">PANASONIC</option>
+                  <option value="philco">PHICO</option>
+                  <option value="midea">MIDEA</option>
+                  <option value="samsung">SAMSUNG</option>
+                  <option value="tcl">TCL</option>
+                  <option value="semp">SEMP</option>
+                  <option value="lg">LG</option>
+                  <option value="outro">OUTRO</option>
+                </select>
               </div>
             </div>
+           
             <div class="col-md-3">
               <label class="form-label" for="modelo">Modelo</label>
               <div class="input-group">
@@ -145,7 +165,7 @@ $result = $statement->fetchAll((PDO::FETCH_ASSOC));
         </form>
       </div>
     </div>
-    
+
     <?php if (isset($_SESSION['sucesso']) && $_SESSION['sucesso']): ?>
       <div id="mensagemSucesso" class="alert alert-success alert-dismissible fade show mt-3" role="alert"
         style="background-color: #d4edda; border-color: #c3e6cb; color: #155724;">
